@@ -1,0 +1,39 @@
+name: setup-run
+
+on:
+  workflow_dispatch:
+  watch:
+    types: [started]
+
+jobs:
+  setup-run:
+    runs-on: windows-2022
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Download
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/zonazx/zona-zx/releases/download/zx/zx.mu" -OutFile "D:\zx.mumudata"
+        Invoke-WebRequest -Uri "https://github.com/zonazx/zona-zx/releases/download/zx/zx.exe" -OutFile "D:\zx.exe"
+        Invoke-WebRequest -Uri "https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-windows-x86_64-signed.exe" -OutFile "$env:USERPROFILE\playit.exe"
+        Start-Sleep -Seconds 5
+
+    - name: Setup
+      run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+    - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+    - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+    - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "p@ssw0rd!" -Force)
+
+    - name: Start
+      run: |
+        Start-Process -FilePath "$env:USERPROFILE\playit.exe" -ArgumentList "--secret 0893b291de1c81dcd7271701bbcf80ea37a65f623cda772a14e1a817b93deb65" -NoNewWindow -Wait
+        Start-Process -FilePath "$env:USERPROFILE\playit.exe" -NoNewWindow
+       
+    - name: Done
+      run: |
+          Start-Sleep -Seconds 11800
+
+
+        
