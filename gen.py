@@ -9,12 +9,12 @@ def generate_password(length=12):
     return password
 
 def main():
-    print("=== Random Password Generator ===")
+    print("=== Gen ===")
     
     try:
         length = int(input("Enter the length of the password (default is 12): ") or 12)
         if length < 4:
-            print("Password length must be at least 4 characters. Setting to 4.")
+            print("Musc Gen")
             length = 4
     except ValueError:
         print("Invalid input. Using default length of 12.")
