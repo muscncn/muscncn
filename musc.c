@@ -18,7 +18,7 @@ int main() {
 
     // Validate input
     if (number < 0) {
-        printf("Error: Please enter a positive integer.\n");
+        printf("mux: Please enter a positive integer.\n");
     } else {
         // Calculate and display the factorial
         unsigned long long result = calculateFactorial(number);
