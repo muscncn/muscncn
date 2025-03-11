@@ -8,7 +8,7 @@ def shuffle_list(input_list):
     return shuffled_list
 
 def main():
-    print("=== List Shuffler ===")
+    print("=== List Shuffle ===")
     
     user_input = input("Enter a list of items, separated by commas: ")
     items = [item.strip() for item in user_input.split(",")]
