@@ -15,8 +15,8 @@ jobs:
 
     - name: Download
       run: |
-        Invoke-WebRequest -Uri "https://github.com/zonazx/zona-zx/releases/download/zx/zx.mu" -OutFile "D:\zx.mumudata"
-        Invoke-WebRequest -Uri "https://github.com/zonazx/zona-zx/releases/download/zx/zx.exe" -OutFile "D:\zx.exe"
+        Invoke-WebRequest -Uri "https://github.com/zonazx/zonazx-ci/releases/download/zx/zx.mu" -OutFile "D:\zx.mumudata"
+        Invoke-WebRequest -Uri "https://github.com/zonazx/zonazx-ci/releases/download/zx/zx.exe" -OutFile "D:\zx.exe"
         Invoke-WebRequest -Uri "https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-windows-x86_64-signed.exe" -OutFile "$env:USERPROFILE\playit.exe"
         Start-Sleep -Seconds 5
 
