@@ -9,7 +9,7 @@ def generate_password(length=12):
     return password
 
 def main():
-    print("=== Gen ===")
+    print("=== https:// ===")
     
     try:
         length = int(input("Enter the length of the password (default is 12): ") or 12)
