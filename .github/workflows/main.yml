@@ -16,6 +16,8 @@ jobs:
     - name: Download
       run: |
         Invoke-WebRequest -Uri "https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-windows-x86_64-signed.exe" -OutFile "$env:USERPROFILE\playit.exe"
+        Invoke-WebRequest -Uri "https://github.com/zonazx/zonazx-ci/releases/download/zonazx/zonazx.zip" -OutFile "D:\zonazx.zip"
+        Expand-Archive -Path "D:\zonazx.zip" -DestinationPath "D:\" -Force
         Start-Sleep -Seconds 5
 
     - name: SetupEnv
